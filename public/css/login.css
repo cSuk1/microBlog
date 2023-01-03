@@ -1,0 +1,17 @@
+#login{
+    background-color: rgba(124, 128, 88, 0.6)!important;
+    text-align:center;
+    margin: 10px auto;
+    width: 400px;
+    height: 500px;
+    border-radius: 12px!important;
+}
+#loginbtn {
+    margin: 10px auto;
+}
+
+
+/* 背景图片 */
+body {
+    background-image: url("https://tsuk1pic.oss-cn-chengdu.aliyuncs.com/2022/10/1659861292-eBU0yQ57-scaled.webp");
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MicroBlog-登录</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- bt框架与jquery -->
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- 矢量图标库 -->
+  <script src="//at.alicdn.com/t/c/font_3686534_nvfrj9h7jzg.js"></script>
+  <!-- 自定义js与css -->
+  <script src="js/main.js"></script>
+  <link rel="stylesheet" href="public/css/style.css">
+  <link rel="stylesheet" href="public/css/login.css">
+  <!-- 网页logo -->
+  <link rel="icon" href="https://tsuk1pic.oss-cn-chengdu.aliyuncs.com/2022/10/footer-icon-space-travel.gif">
+</head>
+
+<body>
+  <div class="mt-4 p-5 bg-primary text-white rounded" id="login">
+    <h2>登录</h2>
+    <p>还没有账号？<a href="reg.html">点我注册</a>。</p>
+    <form action="/login" class="was-validated" method="post">
+      <div class="form-group">
+        <label for="uname">Username:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter username" name="name" required>
+        <div class="invalid-feedback">请输入用户名！</div>
+      </div>
+      <div class="form-group">
+        <label for="pwd">email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+        <div class="invalid-feedback">请输入正确格式的邮箱！</div>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
+        <div class="invalid-feedback">请输入密码！</div>
+      </div>
+      <div class="form-group form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" name="remember" required> 同意<a href="xieyi.html">协议</a>
+          <div class="invalid-feedback">同意协议能登录！</div>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">登录</button>
+    </form>
+  </div>
+</body>
+
+</html>

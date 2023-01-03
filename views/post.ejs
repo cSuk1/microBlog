@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MicroBlog-阅读</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bt框架与jquery -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- 矢量图标 -->
+    <link rel="stylesheet" href="/public/css/font/iconfont.css">
+    <script src="//at.alicdn.com/t/c/font_3686534_nvfrj9h7jzg.js"></script>
+    <!-- 自定义css与js -->
+    <script src="/public/css/font/iconfont.js"></script>
+    <script src="/public/js/main.js"></script>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <!-- 网页logo -->
+    <link rel="icon" href="https://tsuk1pic.oss-cn-chengdu.aliyuncs.com/2022/10/footer-icon-space-travel.gif">
+    <!-- markdown -->
+    <link rel="stylesheet" href="/public/editor/css/editormd.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light" id="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html"><img
+                        src="https://tsuk1pic.oss-cn-chengdu.aliyuncs.com/2022/10/footer-icon-space-travel.gif"
+                        alt="logo" width="36px" height="36px"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"> <svg class="icon navicon" aria-hidden="true">
+                                    <use xlink:href="#icon-shouye"></use>
+                                </svg>首页</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="publish.html"><svg class="icon navicon" aria-hidden="true">
+                                    <use xlink:href="#icon-xiugai"></use>
+                                </svg>发布</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="article.html"><svg class="icon navicon" aria-hidden="true">
+                                    <use xlink:href="#icon-dingdan"></use>
+                                </svg>文章</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mine.ejs"><svg class="icon navicon" aria-hidden="true">
+                                    <use xlink:href="#icon-shoucang"></use>
+                                </svg>我的</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="getinfo"><svg class="icon navicon" aria-hidden="true">
+                                    <use xlink:href="#icon-biaozhang"></use>
+                                </svg>信息</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout" id="loginouturl"><svg class="icon navicon"
+                                    aria-hidden="true">
+                                    <use xlink:href="#icon-liangse"></use>
+                                </svg><span id="login-out">登出</span></a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" action="search" method="post">
+                        <input class="form-control me-2" type="text" placeholder="请输入文章标题" name="title" style="height: 38px!important; margin: auto;">
+                        <button class="btn btn-primary" type="submit">search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 阅读器 -->
+        <div class="row" id="read">
+            <!-- ejs语法
+                带=的不会解析HTML标签，
+                带-的会解析HTML标签 
+                判断语句注意：1.不能加=号 2.闭合{}-->
+            <!-- ejs渲染 -->
+            <h1 id="posttitle">
+                <%= title %>
+            </h1>
+            <div id="potsinfo">
+                <%- author %>
+                    &nbsp;&nbsp;&nbsp;<span>
+                        发布日期：<svg class="icon navicon" aria-hidden="true">
+                            <use xlink:href="#icon-rili"></use>
+                        </svg><%= date %>
+                    </span>&nbsp;&nbsp;&nbsp;
+                    <span>
+                        热度：<svg class="icon navicon" aria-hidden="true">
+                            <use xlink:href="#icon-re"></use>
+                        </svg><%- heat %>
+                    </span>&nbsp;&nbsp;&nbsp;
+            </div>
+            <hr>
+            <div id="postcontent">
+                <p id="content">
+                    <%- content %>
+                </p>
+                <!-- <p id="before-render" style="display: none;">
+                    <%- content %>
+                </p>
+                <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                <script>
+                    var DATA = document.getElementById("before-render").innerHTML;
+                    document.getElementById('content').innerHTML =
+                        marked.parse(DATA);
+                </script> -->
+            </div>
+            <hr>
+            <!-- 删除按钮 -->
+            <%- btn %>
+        </div>
+        <div class="row">
+            <!-- 来必力评论板 -->
+            <div id="lv-container" data-id="city" data-uid="MTAyMC81NzE4NC8zMzY0OA==" style="margin: 12px;">
+                <script type="text/javascript">
+                    (function (d, s) {
+                        var j, e = d.getElementsByTagName(s)[0];
+
+                        if (typeof LivereTower === 'function') { return; }
+
+                        j = d.createElement(s);
+                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                        j.async = true;
+
+                        e.parentNode.insertBefore(j, e);
+                    })(document, 'script');
+                </script>
+                <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="footer">
+            <!-- Footer -->
+            <footer class="page-footer font-small indigo">
+
+                <!-- Footer Links -->
+                <div class="container">
+
+                    <!-- Grid row-->
+                    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#!">关于</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#!">产品</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#!">成就</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#!">帮助</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#!">联系</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row-->
+                    <hr class="rgba-white-light" style="margin: 0 15%;">
+
+                    <!-- Grid row-->
+                    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+                        <div class="col-md-8 col-12 mt-5">
+                            <p style="line-height: 1.7rem">本站基于Bootstrap框架搭建<br>由Node.js驱动</p><br>
+                            <a href="https://beian.miit.gov.cn"  target="_blank">蜀ICP备2022024994号</a>
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row-->
+                    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+                    <!-- Grid row-->
+                    <div class="row pb-3">
+
+                        <!-- Grid column -->
+                        <div class="col-md-12">
+
+                            <div class="mb-5 flex-center" id="soc-icon">
+
+                                <svg class="icon socicon" aria-hidden="true" data-bs-toggle="popover"
+                                    data-bs-trigger="hover" title="按钮" data-bs-content="微信联系">
+                                    <use xlink:href="#icon-social-wechat" id="weixincontact"></use>
+                                    <img id="weixin" style="box-shadow: 0 5px 10px rgba(0,0,0,.2); border-radius:4px;"
+                                        height="66px"
+                                        src="https://tsuk1pic.oss-cn-chengdu.aliyuncs.com/2022/10/F1BA6569A79070B5552EF2B2D23E33F8.jpg"
+                                        data-src="https://tsuk1pic.oss-cn-chengdu.aliyuncs.com/2022/10/F1BA6569A79070B5552EF2B2D23E33F8.jpg"
+                                        alt="扫一扫加微信-能不能吃完饭再说">
+                                </svg>
+
+                                <a href="rss.xml"><svg class="icon socicon" aria-hidden="true" data-bs-toggle="popover"
+                                        data-bs-trigger="hover" title="按钮" data-bs-content="RSS订阅">
+                                        <use xlink:href="#icon-social-rss"></use>
+                                    </svg></a>
+                                <a href="https://twitter.com"><svg class="icon socicon" aria-hidden="true"
+                                        data-bs-toggle="popover" data-bs-trigger="hover" title="按钮"
+                                        data-bs-content="Twitter">
+                                        <use xlink:href="#icon-social-twitter"></use>
+                                    </svg></a>
+                                <a href="javascript:void(0)" id="backtotop" data-bs-toggle="popover"
+                                    data-bs-trigger="hover" title="按钮" data-bs-content="点我可以返回顶部喔"> <img
+                                        src="https://tsuk1pic.oss-cn-chengdu.aliyuncs.com/2022/10/footer-icon-space-travel.gif"
+                                        alt="logo" height="64px" width="64px"></a>
+                                <a href="https://weibo.com"><svg class="icon socicon" aria-hidden="true"
+                                        data-bs-toggle="popover" data-bs-trigger="hover" title="按钮"
+                                        data-bs-content="微博">
+                                        <use xlink:href="#icon-social-weibo"></use>
+                                    </svg></a>
+                                <a href="http://wpa.qq.com/msgrd?v=3&uin=652240843&site=qq&menu=yes"><svg
+                                        class="icon socicon" aria-hidden="true" data-bs-toggle="popover"
+                                        data-bs-trigger="hover" title="按钮" data-bs-content="QQ联系">
+                                        <use xlink:href="#icon-social-qq"></use>
+                                    </svg></a>
+                                <a href="https:github.com/csuk1"><svg class="icon socicon" aria-hidden="true"
+                                        data-bs-toggle="popover" data-bs-trigger="hover" title="按钮"
+                                        data-bs-content="github">
+                                        <use xlink:href="#icon-social-github"></use>
+                                    </svg></a>
+
+
+                            </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row-->
+
+                </div>
+                <!-- Footer Links -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3">© 2022 Copyright:
+                    <a href="https://tsuk1.cn/"> 蔡兴</a>
+                </div>
+                <!-- Copyright -->
+
+            </footer>
+            <!-- Footer -->
+        </div>
+
+</body>
+<script>
+    // 提示框
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    })
+</script>
+
+</html>

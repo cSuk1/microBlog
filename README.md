@@ -1,5 +1,5 @@
 # microBlog
-请下载下面的Editor插件并将文件夹放在public目录当中。
+请下载下面的Editor插件并将文件夹放在public目录当中-文档在下方。
 导入数据库，然后修改db.js中的密码
 在命令行执行
 ```bash
